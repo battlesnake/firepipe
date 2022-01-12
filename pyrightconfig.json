@@ -1,0 +1,11 @@
+{
+    "include": [
+        "firepipe/*.py",
+        "test/*.py",
+        "ci/*.py"
+    ],
+    "exclude": [
+        "**/__pycache__"
+    ],
+    "reportOptionalMemberAccess": "none"
+}
