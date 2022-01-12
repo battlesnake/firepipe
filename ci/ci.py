@@ -14,7 +14,7 @@ class ExecTask(Task):
         super().__init__(name)
         self.args = args
 
-    def execute(self, context: ExecutionContext) -> None:
+    def execute(self, context: ExecutionContext) -> None: # pylint: disable=unused-argument
         retcode = subprocess.call(self.args)
         if retcode != 0:
             raise Exception(f'Subprocess exited with code {retcode}', retcode)
@@ -30,7 +30,10 @@ def main():
     process.add(pyright)
     process.add(pytest)
     orchestrator = Orchestrator(process)
-    fail = not orchestrator.run()
+    fail = False
+    if not orchestrator.run():
+        fail = True
+        logging.error('Orchestrator failed')
     failed = []
     for node in orchestrator.process.graph.nodes:
         task = node.task
