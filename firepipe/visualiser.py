@@ -32,7 +32,7 @@ def render_process(process: Process, node_width: int = 20, row_width: int = 78) 
             layer = [node]
     if layer:
         layers.append(layer)
-    logging.debug('Simplified graph, with possibly innacurate dependencies (edges):')
+    logging.debug('Generating simplified graph, with possibly innacurate dependencies (edges)')
     vert_bar = center_text('|', node_width)
     prev_nodes = 0
     for idx, layer in enumerate(layers):

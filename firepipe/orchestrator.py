@@ -397,7 +397,7 @@ class Orchestrator():
         metrics.result = result
         metrics.success = success
         self._task_completed(state)
-        logging.info('Task %s %s', state.task.name, 'completed' if success else 'failed')
+        logging.debug('Task %s %s', state.task.name, 'completed' if success else 'failed')
 
     def _get_task_state_by_ref(self, ref: TaskRef) -> TaskState:
         if isinstance(ref, TaskState):
